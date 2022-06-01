@@ -1,0 +1,19 @@
+.questionsContainer{
+    background: none;
+    box-shadow: 2px 2px 2px 2px #D3D3D3 inset;
+    width: 85%;
+    min-height: 20vh;
+    height: fit-content;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+  
+/* ::-webkit-scrollbar {
+    width: 20px;
+}
+  
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+}
+   */
