@@ -16,7 +16,7 @@ function SurveyForUser() {
       setMessageForUser("");
       if(id.current.value) {
         try{
-          fetch("http://localhost:8080/api/answers/newanswers", {
+          fetch("https://my-survey-service.herokuapp.com/api/answers/newanswers", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
