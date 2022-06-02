@@ -75,3 +75,7 @@
     border:none;
     box-shadow: 2px 2px 2px 2px #D3D3D3 inset;
 }
+
+.tomailInput{
+    margin-bottom: 3em;
+}

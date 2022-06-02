@@ -7,9 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 
 function Answers() {
-  
-//   const [numberOfQuestion, setNumberOfQuestion] = useState(1);
-//   const [arrayOfCreatedQuestions, setArrayOfCreatedQuestions] = useState([]);
   const [arrayOfObjectsOfAnswers, setArrayOfObjectsOfAnswers] = useState([]);
   
   const navigate = useNavigate();
@@ -40,24 +37,15 @@ function Answers() {
       ))
   },[]);
   
-   
-
-//   const addQuestionToContainer = () => {
-//     setNumberOfQuestion(numberOfQuestion+1)
-//     setArrayOfCreatedQuestions([...arrayOfCreatedQuestions,numberOfQuestion])
-//   }
-
-
   return(
     <div>
 
-<div className="header">
+    <div className="header">
                 <div className="siteName">מערכת משובים דיגיטלית</div>
                 <div className="hi_logout_container">
                   <button className="logout" onClick={goBackToHomePage}>חזור לדף הבית</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
-                </div>
-                
+                </div>      
             </div>
 
       <div className="answersContainer">
@@ -67,7 +55,8 @@ function Answers() {
             </div>
            <div className="inputsContainer">
               <div className="answersFromUserContainer">
-                 {arrayOfObjectsOfAnswers.length ? arrayOfObjectsOfAnswers.map((item) => ( <AnswersFromSurvey 
+                 {arrayOfObjectsOfAnswers.length ? arrayOfObjectsOfAnswers.map((item) => 
+                 ( <AnswersFromSurvey 
                    firstName={item.firstName}
                    lastName={item.lastName}
                    id={item.id}
@@ -76,7 +65,6 @@ function Answers() {
                 />
                  )) : null}
               </div>
-    
           </div>
         </div>
       </div>

@@ -85,7 +85,6 @@ function SurveyForUser() {
                 <div className="openQuestion">
                   <label htmlFor="questionInput" className="writeHereTitle">?מה ניתן לשפר לפעם הבאה</label>
                   <textarea type="text" className="questionInput" ref={open_answer} rows="5" cols="30" maxLength="250"></textarea>
-                  {/* <div className="questionButtonContainer"></div> */}
                </div>
                 </div>
                 <button className="saveButton" onClick={sendSurveyByClient}>שלח תשובות</button>

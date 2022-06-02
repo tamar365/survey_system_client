@@ -26,7 +26,6 @@ function Survey() {
     setArrayOfCreatedQuestions([...arrayOfCreatedQuestions,numberOfQuestion])
   }
 
-
   return(
     <div>
 
@@ -44,14 +43,6 @@ function Survey() {
             <h3 className="createSurveyTitle">יצירת משוב</h3>
             <input className="surveyTitle" placeholder="כותרת-שם המשוב"></input>
            <div className="inputsContainer">
-              {/* <div className="firstNameInputContainer">
-                <h4 className="firstNameTitle">:שם פרטי</h4>
-                <input className="firstNameInput"></input>
-              </div>
-              <div className="lastNameInputContainer">
-                <h4 className="lastNameTitle">:שם משפחה</h4>
-                <input className="lastNameInput"></input>
-              </div> */}
               <div className="addQuestionContainer">
                 <button className="addQuestionButton" onClick={addQuestionToContainer}><i className="fas fa-pencil-alt"></i></button>
                 <h4 className="addQuestionTitle">צור שאלה</h4>

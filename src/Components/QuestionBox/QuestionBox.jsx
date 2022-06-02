@@ -3,7 +3,7 @@ import {useState} from "react";
 
 function QuestionBox ({deleteQuestionFunc}) {
     
-    const [optionOfQuestion,setOptionOfQuestion] = useState("")//option to send kind of question to SurveyForUser
+    const [optionOfQuestion,setOptionOfQuestion] = useState("")//the variable is an option to send kind of question to built SurveyForUser from DB
 
     return (
         <div className="openQuestion">

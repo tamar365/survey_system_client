@@ -1,11 +1,11 @@
-import "./ScaleQuestions.css";
+// import "./ScaleQuestions.css";
 
-function ScaleQuestions () {
-    return (
-        <div className="scaleQuestion">
+// function ScaleQuestions () {
+//     return (
+//         <div className="scaleQuestion">
             
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
-export default ScaleQuestions;
+// export default ScaleQuestions;

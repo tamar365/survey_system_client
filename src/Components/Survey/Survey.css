@@ -58,7 +58,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* margin-top: 2em; */
     text-align: right;
 }
 
@@ -78,7 +77,6 @@
 .addQuestionContainer{
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content:space-between;
     text-align: center;
     margin-top: 1em;

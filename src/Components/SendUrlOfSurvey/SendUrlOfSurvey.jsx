@@ -19,7 +19,7 @@ function SendUrlOfSurvey () {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_9r6nz3w', 'template_iywedyq', e.target, 'LCss0q5vqj-VYk3f9')
+    emailjs.sendForm('service_9r6nz3w', 'template_iywedyq', e.target,'LCss0q5vqj-VYk3f9')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -49,6 +49,9 @@ function SendUrlOfSurvey () {
            <div className="inputsContainer">
               <div className="answersFromUserContainer">
                   <form onSubmit={sendEmail}>
+                  <div>
+                      <input className="tomailInput emailInput" type="email" placeholder="לשלוח אל כתובת המייל" name="toEmail"/> 
+                    </div>
                     <div>
                       <input className="nameEmailInput emailInput" type="text" placeholder="שם" name="name"/> 
                     </div>

@@ -4,7 +4,6 @@ import OpenQuestion from "../OpenQuestion/OpenQuestion";
 
 
 function QuestionsContainer ({newQuestion}) {
-    //when user click save the question got into the array of the survey. delete will disapear the component of this question
      
     return (
         <div className="questionsContainer">
