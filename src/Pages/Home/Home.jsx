@@ -1,5 +1,4 @@
 import "./Home.css";
-// import Header from "../../Components/Header/Header";
 import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import React from "react";
@@ -8,13 +7,12 @@ import React from "react";
 function App() {
 
     const navigate = useNavigate();
-
     const accessToken = localStorage.getItem("accessToken");
     const decoded = jwt(accessToken);
 
     function logout() {
         localStorage.removeItem("accessToken");
-        navigate("/");
+        navigate("/login");
     }
 
     function goToCreateSurveyPage() {
@@ -25,14 +23,6 @@ function App() {
         navigate("/MySurveys");
     }
 
-    // function goToAnswers() {
-    //     navigate("/Answers");
-    // }
-
-    // function goToSendUrlSurvey(){
-    //     navigate("/SendUrlOfSurvey");
-    // }
-
     return (
         <div className="home">
             <div className="header">
@@ -40,8 +30,7 @@ function App() {
                 <div className="hi_logout_container">
                   <button className="logout" onClick={logout}>התנתק</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
-                </div>
-                
+                </div>                
             </div>
             <div className="body">
                 <div className="bodyleft">
@@ -49,14 +38,11 @@ function App() {
                     <div className="optionsButtonContainer">
                     <button className="createButton button" onClick={goToCreateSurveyPage}>ליצור סקר</button>
                     <button className="mySurveysButton button" onClick={goToMySurveys}>הסקרים שלי</button>
-                    {/* <button className="fillSurveyButton button" onClick={goToMySurveys}>לענות על משוב</button> 
-                    <button className="toSendButton button" onClick={goToSendUrlSurvey}>לשלוח משוב</button> 
-                    <button className="seeAnswersButton button" onClick={goToAnswers}>לצפות בתשובות</button> */}
                     </div>
                 </div>
                 <div className="bodyright">
                     <h3>ברוכים הבאים</h3>
-                    <h3>לאתר המשובים הדיגיטלי</h3>
+                    <h3>לאתר הסקרים הדיגיטלי</h3>
                 </div>
             </div>
             <div className="footer">

@@ -3,8 +3,6 @@ import React from "react";
 
 function QuestionBox ({deleteQuestionFunc, setOptionOfQuestion, setTheWrittenQuestion, saveOneQuestionFunc, id}) {
     
-    
-    
     return (
         <div className="openQuestion">
             <label htmlFor="questionInput" className="writeHereTitle">:כתב/י כאן את השאלה</label>

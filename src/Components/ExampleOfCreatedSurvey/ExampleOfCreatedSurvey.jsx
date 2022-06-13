@@ -1,10 +1,10 @@
 import "./ExampleOfCreatedSurvey.css";
-import PopUp from "../PopUp/PopUp";
 import OpenQuestion from "../OpenQuestion/OpenQuestion";
 import ScaleQuestion from "../ScaleQuestion/ScaleQuestion";
 import { useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React from "react";
+import jwt from "jwt-decode";
 
 
 function ExampleOfCreatedSurvey() {
@@ -12,62 +12,30 @@ function ExampleOfCreatedSurvey() {
     const fName =useRef("");
     const lName =useRef("");
     const id =useRef("");
-    
     const [messageForUser, setMessageForUser] = useState("");
     const [userChoice, setUserChoice] = useState("");
     const [userAnswer, setUserAnswer] = useState("")
-    const [popUp, setPopUp] = useState(false);
+    const navigate = useNavigate();
+    const accessToken = localStorage.getItem("accessToken");
+    const decoded = jwt(accessToken);
     const location = useLocation();
-    
-    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 23 ~ SurveyForUser ~ location", location)
-
     const savedDetailsOfSurvey = location.state.savedDetailsOfSurvey;
-    // const location.state.savedDetailsOfSurvey._id = parameters;
-     
-    // const {props.location.state.savedDetailsOfSurvey._id} = parameters;
-    // const scaleQuestionOption = props.location.state.scaleQuestionOption;
-    // const openQuestionOption = props.location.state.openQuestionOption;
-      
-    // const sendSurveyByClient = async () => {
-    //   setMessageForUser("");
-    //   if(id.current.value) {
-    //     try{
-    //       const response = await fetch("http://localhost:8080/api/answers/newanswers", {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           authorization: `bearer ${localStorage.getItem("accessToken")}`,
-    //         },
-    //         body: JSON.stringify({ 
-    //               firstName:fName.current.value,
-    //               lastName:lName.current.value,
-    //               id:id.current.value,
-    //               scaleAnswer:userChoice,
-    //               openAnswer:userAnswer
-    //         }),
-    //       })
-    //       const data = await (response.json());
-    //       console.log(data)
-           
-            
-            
-    //         // setPopUp(true)
-    //         // setTimeout(() => window.close(),5000)
-    //     } catch (e) {
-    //       console.log(e);
-    //     }
-    //   } else{
-    //     setMessageForUser("שדה חובה");
-    //   }
-      
-  // }
+   
+    function goBackToHomePage() {
+        navigate("/");
+    }
 
     return (
         <div className="surveyForUser_allThePage">
-  
+          <div className="header">
+                <div className="siteName">מערכת סקרים דיגיטלית</div>
+                <div className="hi_logout_container">
+                  <button className="logout" onClick={goBackToHomePage}>חזור לדף הבית</button>
+                  <div className="HiTitle">{decoded.username}  שלום</div>
+                </div>
+            </div>
         <div className="surveyContainer">
           <div className="surveyUserForm">
-            
              <div className="inputsContainer">
                 <h4 className="surveyTitleUser">{savedDetailsOfSurvey.title} - דוגמא </h4>
                 <div className="firstNameInputContainer">
@@ -86,7 +54,6 @@ function ExampleOfCreatedSurvey() {
                   <input className="IDInput" maxLength="9" ref={id} required></input>
                   <p className="messageForUser">{messageForUser}</p>
                 </div>
-             
                 <div className="questionsContainer">
                   {
                   savedDetailsOfSurvey.questions.map((question) => (
@@ -95,13 +62,19 @@ function ExampleOfCreatedSurvey() {
                     null
                    ))
                   }
-                
                 </div>
                 <button className="saveButton" >שלח תשובות</button>
-                {popUp && <PopUp/>}
             </div>
           </div>
         </div>
+        <div className="footer">
+                <div className="iconContainer">
+                   <i className='fas fa-phone'></i>
+                   <i className='fas fa-at'></i>
+                   <i className="fa fa-facebook-square"></i>
+                   <i className="fa fa-instagram"></i>
+                </div>
+            </div>
       </div>
     )
 }

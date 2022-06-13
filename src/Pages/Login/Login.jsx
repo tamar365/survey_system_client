@@ -27,19 +27,18 @@ function Login() {
         );
         const status = response.status;
         console.log(status);
-        console.log(response);
         const data = await (response.json())
         if (status === 200) {
           localStorage.setItem(
             "accessToken",
             JSON.stringify(data)
           );
-          navigate("/Home");
+          navigate("/");
         } else {
-          setLoginMessage("שם משתמש או סיסמא לא תקינים");
+          setLoginMessage("שם משתמש או מייל לא תקינים");
         }
       } else {
-        setLoginMessage("Please enter username and password");
+        setLoginMessage("בבקשה הכנס/י שם משתמש ומייל");
       }
     }
   
@@ -101,8 +100,6 @@ function Login() {
           </button>
           <h4 className="smallTitle">?האם אתה כבר רשום במערכת </h4>
           </div>
-         
-         
         </div>
       </div>
       </div>

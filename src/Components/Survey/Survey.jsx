@@ -1,35 +1,29 @@
 import "./Survey.css";
 import QuestionBox from "../QuestionBox/QuestionBox";
-// import SurveyForUser from "../SurveyForUser/SurveyForUser";
 import { useState, useRef } from "react";
 import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
 
-
 function Survey() {
   
   const [numberOfQuestion, setNumberOfQuestion] = useState(0);
   const [arrayOfCreatedQuestionsUI, setArrayOfCreatedQuestionsUI] = useState([]);
-  // const arrayOfObjectOfQuestionsToDB = [];
   const [arrayOfObjectOfQuestionsToDB, setArrayOfObjectOfQuestionsToDB] = useState([]);
   const [scaleQuestionOption, setScaleQuestionOption] = useState(false);
   const [openQuestionOption, setOpenQuestionOption] = useState(false);
   const [optionOfQuestion,setOptionOfQuestion] = useState("");
   const [theWrittenQuestion, setTheWrittenQuestion] = useState("");
-  // const [showTheSurveyForUser, setShowTheSurveyForUser] = useState(false);
   const [savedDetailsOfSurvey, setSavedDetailsOfSurvey] = useState({});
   const [idOfSurvey, setIdOfSurvey] = useState("");
   const nameOfSurvey = useRef("");
-  
   const navigate = useNavigate();
-
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwt(accessToken);
 
   function goBackToHomePage() {
-      navigate("/Home");
+      navigate("/");
   }
 
   const addQuestionToContainer = () => {
@@ -38,14 +32,11 @@ function Survey() {
   }
 
   const saveOneQuestionFunc = () => {
-    
     setArrayOfObjectOfQuestionsToDB ([ ...arrayOfObjectOfQuestionsToDB,{
       theWrittenQuestion:theWrittenQuestion,
       optionOfQuestion:optionOfQuestion,
       numberOfQuestion:numberOfQuestion
     }])
-     
-
   }
 
   const saveTheQuestions = async () => {
@@ -59,29 +50,17 @@ function Survey() {
         },
         body: JSON.stringify({ 
             title: nameOfSurvey.current.value,
-            questions: arrayOfObjectOfQuestionsToDB
-            
+            questions: arrayOfObjectOfQuestionsToDB 
         }),
       });
       const status = response.status;
       const data = await(response.json()); 
       
-        if (status === 200) {
-          console.log(data);
-          
+      if (status === 200) { 
           setSavedDetailsOfSurvey(data);
           setIdOfSurvey(data._id);
-          
           data.questions.filter(item => item.optionOfQuestion === "שאלה פתוחה" ? setOpenQuestionOption(true) : item.optionOfQuestion === "שאלת דירוג" ? setScaleQuestionOption(true) : null)
-          // setShowTheSurveyForUser(true);
-          
-         
-       
-        }    
-
-        
-        // setPopUp(true)
-        // setTimeout(() => window.close(),5000)
+      }   
     } catch (e) {
       console.log(e);
     }
@@ -95,25 +74,19 @@ function Survey() {
     }})
   }
   
-  
-  
-
   return(
     <div>
-
             <div className="header">
-                <div className="siteName">מערכת משובים דיגיטלית</div>
+                <div className="siteName">מערכת סקרים דיגיטלית</div>
                 <div className="hi_logout_container">
                   <button className="logout" onClick={goBackToHomePage}>חזור לדף הבית</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
                 </div>
-                
             </div>
-
       <div className="surveyContainer">
         <div className="surveycreationForm">
-            <h3 className="createSurveyTitle">יצירת משוב</h3>
-            <input className="surveyTitle" placeholder="כותרת-שם המשוב" ref={nameOfSurvey}></input>
+            <h3 className="createSurveyTitle">יצירת סקר</h3>
+            <input className="surveyTitle" placeholder="כותרת-שם הסקר" ref={nameOfSurvey}></input>
            <div className="inputsContainer">
               <div className="addQuestionContainer">
                 <button className="addQuestionButton" onClick={addQuestionToContainer}><i className="fa fa-plus"></i></button>
@@ -126,7 +99,7 @@ function Survey() {
                   />
                  )) : undefined}
               </div>
-              <button className="saveButton" onClick={saveTheQuestions}>שמור משוב</button>
+              <button className="saveButton" onClick={saveTheQuestions}>שמור סקר</button>
           </div>
         </div>
       </div>
@@ -137,11 +110,7 @@ function Survey() {
             <i className="fa fa-facebook-square"></i>
             <i className="fa fa-instagram"></i>
           </div>
-        </div> 
-       
-            
-          
-          
+        </div>      
     </div>
   )
 }

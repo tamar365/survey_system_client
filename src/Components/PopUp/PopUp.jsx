@@ -1,15 +1,23 @@
 import "./PopUp.css";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
-function popUp() {
+function PopUp({message}) {
 
+    const navigate = useNavigate();
+
+    function closePopup () {
+        navigate("/") 
+    }
+    
     return (
        <div className="backdrop">
            <div className="popup"> 
-               <p className="textOfPopUp">תודה שהקדשת מזמנך למילוי המשוב</p>
+               <p className="textOfPopUp">{message}</p>
+               <button className="popupButton" onClick={closePopup}>אישור</button>
            </div>
        </div>
     );
 }
 
-export default popUp;
+export default PopUp;

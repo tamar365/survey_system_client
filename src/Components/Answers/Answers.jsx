@@ -6,21 +6,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import React from "react";
 
 
-
 function Answers() {
   const [arrayOfObjectsOfAnswers, setArrayOfObjectsOfAnswers] = useState([]);
-  
   const navigate = useNavigate();
-
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwt(accessToken);
-  
   const location = useLocation();
   const idOfSurvey = location.state.idSurvey;
-  console.log("🚀 ~ file: Answers.jsx ~ line 19 ~ Answers ~ idOfSurvey", idOfSurvey)
   
   function goBackToHomePage() {
-    navigate("/Home");
+    navigate("/");
   }
  
   useEffect(() => {
@@ -41,19 +36,17 @@ function Answers() {
             openAnswer:answersFromUser.openAnswer
           })) 
       ))
-  },[]);
+  },[idOfSurvey]);
   
   return(
     <div>
-
     <div className="header">
-                <div className="siteName">מערכת משובים דיגיטלית</div>
+                <div className="siteName">מערכת סקרים דיגיטלית</div>
                 <div className="hi_logout_container">
                   <button className="logout" onClick={goBackToHomePage}>חזור לדף הבית</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
                 </div>      
             </div>
-
       <div className="answersContainer">
         <div className="answersCreationForm">
             <div className="answersTitleContainer">
@@ -63,6 +56,7 @@ function Answers() {
               <div className="answersFromUserContainer">
                  {arrayOfObjectsOfAnswers.length ? arrayOfObjectsOfAnswers.map((item) => 
                  ( <AnswersFromSurvey 
+                   key={item.id}
                    firstName={item.firstName}
                    lastName={item.lastName}
                    id={item.id}
@@ -82,7 +76,6 @@ function Answers() {
             <i className="fa fa-instagram"></i>
           </div>
         </div> 
-
     </div>
   )
 }

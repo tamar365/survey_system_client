@@ -1,11 +1,10 @@
 import "./SurveyForUser.css";
-import PopUp from "../PopUp/PopUp";
 import OpenQuestion from "../OpenQuestion/OpenQuestion";
 import ScaleQuestion from "../ScaleQuestion/ScaleQuestion";
 import { useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import React from "react";
-
+import PopUpForSurveyUser from "../PopUpForSurveyUser/PopUpForSurveyUser";
 
 function SurveyForUser() {
     
@@ -16,27 +15,18 @@ function SurveyForUser() {
     const [messageForUser, setMessageForUser] = useState("");
     const [userChoice, setUserChoice] = useState("");
     const [userAnswer, setUserAnswer] = useState("")
-    const [popUp, setPopUp] = useState(false);
-    
+    const [openPopup, setOpenPopup] = useState(false);
+    const message = "תודה שהקדשת מזמנך למילוי המשוב"
     const location = useLocation();
-    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 23 ~ SurveyForUser ~ location", location)
-    
     const data = location.search
-    
     const {idOfSurvey} = useParams();
     const data1 = data.replace(/\+/g, ' ')
     let decodedSearch = decodeURIComponent(data1)
-  
     decodedSearch = decodedSearch.substring(1);
     decodedSearch = decodedSearch.slice(0, -1);
-    
     const detailsOfSurvey = JSON.parse(decodedSearch);
-    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 39 ~ SurveyForUser ~ detailsOfSurvey", detailsOfSurvey)
-    
-    
     const questionsDecoded = detailsOfSurvey.questions;
-    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 39 ~ SurveyForUser ~ questionsDecoded", questionsDecoded)
-
+    
     const sendSurveyByClient = async () => {
       setMessageForUser("");
       if(id.current.value) {
@@ -54,31 +44,25 @@ function SurveyForUser() {
                   scaleAnswer:userChoice,
                   openAnswer:userAnswer,
                   idOfSurvey: idOfSurvey
-          
             }),
           })
           const data = await (response.json());
           console.log(data) 
           if (response.status === 200) {
-            alert("סקר נשלח בהצלחה. תודה על שיתוף הפעולה")
+            setOpenPopup(true);
           }         
-            // setPopUp(true)
-            // setTimeout(() => window.close(),5000)
         } catch (e) {
           console.log(e);
         }
       } else{
         setMessageForUser("שדה חובה");
-      }
-      
-  }
+      } 
+    }
 
     return (
         <div className="surveyForUser_allThePage">
-  
         <div className="surveyContainer">
           <div className="surveyUserForm">
-            
              <div className="inputsContainer">
                 <h4 className="surveyTitleUser">{detailsOfSurvey.title}</h4>
                 <div className="firstNameInputContainer">
@@ -97,7 +81,6 @@ function SurveyForUser() {
                   <input className="IDInput" maxLength="9" ref={id} required></input>
                   <p className="messageForUser">{messageForUser}</p>
                 </div>
-             
                 <div className="questionsContainer">
                   {
                   questionsDecoded.map((question) => (
@@ -106,10 +89,9 @@ function SurveyForUser() {
                     null
                    ))
                   }
-                
                 </div>
                 <button className="saveButton" onClick={sendSurveyByClient}>שלח תשובות</button>
-                {popUp && <PopUp/>}
+                {openPopup && <PopUpForSurveyUser message={message}/>}
             </div>
           </div>
         </div>
