@@ -1,4 +1,4 @@
-/* .openQuestion {
+.openQuestion {
     background: white;
     margin-top: 1em;
     padding: 1em;
@@ -9,25 +9,22 @@
 .writeHereTitle{
     font-weight: bold;
     padding: 1em;
+    direction: rtl;
 }
 
 .questionInput{
     width: 100%;
-   height: 5vh;
+   height: 15vh;
    border: none;
    background: #e9e7e7;
    box-shadow: 2px 2px 2px #a8a7a7 inset;
    text-align: right;
    direction: rtl;
+   padding: 0.5em;
 }
-
+/* 
 .questionButtonContainer{
     margin-top: 1em;
     display: flex;
     flex-direction: row;
-}
-
-.deleteQuestionButton{
-    margin:1em;
-    padding:0.5em;
 } */

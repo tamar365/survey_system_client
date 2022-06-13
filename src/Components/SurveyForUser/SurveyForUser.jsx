@@ -1,22 +1,47 @@
 import "./SurveyForUser.css";
 import PopUp from "../PopUp/PopUp";
-import {useRef, useState} from "react";
+import OpenQuestion from "../OpenQuestion/OpenQuestion";
+import ScaleQuestion from "../ScaleQuestion/ScaleQuestion";
+import { useRef, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import React from "react";
 
 
 function SurveyForUser() {
+    
     const fName =useRef("");
     const lName =useRef("");
     const id =useRef("");
-    const open_answer=useRef("");
+    
     const [messageForUser, setMessageForUser] = useState("");
     const [userChoice, setUserChoice] = useState("");
+    const [userAnswer, setUserAnswer] = useState("")
     const [popUp, setPopUp] = useState(false);
-      
-    const sendSurveyByClient = () => {
+    
+    const location = useLocation();
+    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 23 ~ SurveyForUser ~ location", location)
+    
+    const data = location.search
+    
+    const {idOfSurvey} = useParams();
+    const data1 = data.replace(/\+/g, ' ')
+    let decodedSearch = decodeURIComponent(data1)
+  
+    decodedSearch = decodedSearch.substring(1);
+    decodedSearch = decodedSearch.slice(0, -1);
+    
+    const detailsOfSurvey = JSON.parse(decodedSearch);
+    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 39 ~ SurveyForUser ~ detailsOfSurvey", detailsOfSurvey)
+    
+    
+    const questionsDecoded = detailsOfSurvey.questions;
+    console.log("🚀 ~ file: SurveyForUser.jsx ~ line 39 ~ SurveyForUser ~ questionsDecoded", questionsDecoded)
+
+    const sendSurveyByClient = async () => {
       setMessageForUser("");
       if(id.current.value) {
         try{
-          fetch("https://my-survey-service.herokuapp.com/api/answers/newanswers", {
+          const response = await fetch("http://localhost:8080/api/answers/newanswers", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -27,15 +52,18 @@ function SurveyForUser() {
                   lastName:lName.current.value,
                   id:id.current.value,
                   scaleAnswer:userChoice,
-                  openAnswer:open_answer.current.value
+                  openAnswer:userAnswer,
+                  idOfSurvey: idOfSurvey
+          
             }),
           })
-            .then((res) => console.log(res.status))
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            
-            setPopUp(true)
-            setTimeout(() => window.close(),5000)
+          const data = await (response.json());
+          console.log(data) 
+          if (response.status === 200) {
+            alert("סקר נשלח בהצלחה. תודה על שיתוף הפעולה")
+          }         
+            // setPopUp(true)
+            // setTimeout(() => window.close(),5000)
         } catch (e) {
           console.log(e);
         }
@@ -46,13 +74,13 @@ function SurveyForUser() {
   }
 
     return (
-        <div>
+        <div className="surveyForUser_allThePage">
   
         <div className="surveyContainer">
           <div className="surveyUserForm">
             
              <div className="inputsContainer">
-                <h4 className="surveyTitleUser">סקר שביעות רצון-מחלקת שירות לקוחות פלאפון</h4>
+                <h4 className="surveyTitleUser">{detailsOfSurvey.title}</h4>
                 <div className="firstNameInputContainer">
                   <h4 className="firstNameTitle">:שם פרטי</h4>
                   <input className="firstNameInput" ref={fName}></input>
@@ -71,21 +99,14 @@ function SurveyForUser() {
                 </div>
              
                 <div className="questionsContainer">
-                <div className="openQuestion">
-                  <label htmlFor="questionScale" className="writeHereTitle">?איך היה השירות שקיבלת</label>
-                  <div className="questionScale">
-                  <input type="radio" className="rating-5" name="rating" value="5" onChange={(e) => (setUserChoice(e.target.value))}/><label htmlFor="rating-5">מצויין</label>
-                  <input type="radio" className="rating-4" name="rating" value="4" onChange={(e) => (setUserChoice(e.target.value))}/><label htmlFor="rating-4">מרוצה מאוד</label>
-                  <input type="radio" className="rating-3" name="rating" value="3" onChange={(e) => (setUserChoice(e.target.value))}/><label htmlFor="rating-3">מרוצה</label>
-                  <input type="radio" className="rating-2" name="rating" value="2" onChange={(e) => (setUserChoice(e.target.value))}/><label htmlFor="rating-2">לא מרוצה</label>
-                  <input type="radio" className="rating-1" name="rating" value="1" onChange={(e) => (setUserChoice(e.target.value))}/><label htmlFor="rating-1">לא מרוצה בכלל</label>
-                  </div>
-               </div>
-                  
-                <div className="openQuestion">
-                  <label htmlFor="questionInput" className="writeHereTitle">?מה ניתן לשפר לפעם הבאה</label>
-                  <textarea type="text" className="questionInput" ref={open_answer} rows="5" cols="30" maxLength="250"></textarea>
-               </div>
+                  {
+                  questionsDecoded.map((question) => (
+                    (question.optionOfQuestion === "שאלה פתוחה") ? <OpenQuestion theTypeOfQuestion={question.optionOfQuestion} theQuestion={question.theWrittenQuestion} setUserAnswer={setUserAnswer}/> : 
+                    (question.optionOfQuestion === "שאלת דירוג") ? <ScaleQuestion theTypeOfQuestion={question.optionOfQuestion} theQuestion={question.theWrittenQuestion}  setUserChoice={setUserChoice}/> :
+                    null
+                   ))
+                  }
+                
                 </div>
                 <button className="saveButton" onClick={sendSurveyByClient}>שלח תשובות</button>
                 {popUp && <PopUp/>}

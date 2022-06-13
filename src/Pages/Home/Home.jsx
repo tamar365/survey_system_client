@@ -2,6 +2,7 @@ import "./Home.css";
 // import Header from "../../Components/Header/Header";
 import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 
 function App() {
@@ -21,21 +22,21 @@ function App() {
     }
     
     function goToMySurveys() {
-        navigate("/SurveyForUser");
+        navigate("/MySurveys");
     }
 
-    function goToAnswers() {
-        navigate("/Answers");
-    }
+    // function goToAnswers() {
+    //     navigate("/Answers");
+    // }
 
-    function goToSendUrlSurvey(){
-        navigate("/SendUrlOfSurvey");
-    }
+    // function goToSendUrlSurvey(){
+    //     navigate("/SendUrlOfSurvey");
+    // }
 
     return (
         <div className="home">
             <div className="header">
-                <div className="siteName">מערכת משובים דיגיטלית</div>
+                <div className="siteName">מערכת סקרים דיגיטלית</div>
                 <div className="hi_logout_container">
                   <button className="logout" onClick={logout}>התנתק</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
@@ -46,10 +47,11 @@ function App() {
                 <div className="bodyleft">
                     <h3 className="optionTitle">...אני מעוניין</h3>
                     <div className="optionsButtonContainer">
-                    <button className="createButton button" onClick={goToCreateSurveyPage}>ליצור משוב</button>
-                    <button className="fillSurveyButton button" onClick={goToMySurveys}>לענות על משוב</button>
-                    <button className="toSendButton button" onClick={goToSendUrlSurvey}>לשלוח משוב</button>
-                    <button className="seeAnswersButton button" onClick={goToAnswers}>לצפות בתשובות</button>
+                    <button className="createButton button" onClick={goToCreateSurveyPage}>ליצור סקר</button>
+                    <button className="mySurveysButton button" onClick={goToMySurveys}>הסקרים שלי</button>
+                    {/* <button className="fillSurveyButton button" onClick={goToMySurveys}>לענות על משוב</button> 
+                    <button className="toSendButton button" onClick={goToSendUrlSurvey}>לשלוח משוב</button> 
+                    <button className="seeAnswersButton button" onClick={goToAnswers}>לצפות בתשובות</button> */}
                     </div>
                 </div>
                 <div className="bodyright">

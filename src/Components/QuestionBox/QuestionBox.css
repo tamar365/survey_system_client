@@ -9,6 +9,7 @@
 .writeHereTitle{
     font-weight: bold;
     padding: 1em;
+    direction: rtl;
 }
 
 .questionInput{
@@ -27,9 +28,28 @@
     flex-direction: row;
 }
 
-.deleteQuestionButton{
-    margin:1em;
-    padding:0.5em;
+.deleteQuestionButton, .saveOneQuestionButton{
+    margin: 1em;
+    /* padding:0.5em; */
+    border:none;
+    width:3.5em;
+    font-size: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteQuestionButton:hover{
+    background: #c2c1c1;
+}
+
+.saveOneQuestionButton:hover{
+    background: #c2c1c1;
+}
+
+.saveOneQuestionButton:focus{
+    color: #fa660a;
 }
 
 .selectKindOfQuestion{
@@ -42,4 +62,8 @@
     margin-top: 1em;
     margin-left: 0;
     padding: 0.5em;
+}
+
+.selectKindOfQuestion:hover{
+    background: #c2c1c1;
 }

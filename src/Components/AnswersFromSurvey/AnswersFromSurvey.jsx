@@ -1,5 +1,5 @@
 import "./AnswersFromSurvey.css";
-
+import React from "react";
 
 function AnswersFromSurvey ({firstName, lastName, id, scaleAnswer, openAnswer}) {
     return (

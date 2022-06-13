@@ -1,3 +1,21 @@
+.surveyBox {
+    background: white;
+    margin-top: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.nameOfSurvey {
+    font-weight: bold;
+}
+
+.containerOfSorveyBoxButtons{
+    margin-top: 1em;
+   display: flex;
+   flex-direction: row;
+}
+
 .surveyContainer{
     display: flex;
     align-items: center;
@@ -109,4 +127,18 @@
 .createSurveyTitle{
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.btnMySurvey {
+    padding: 0.5em;
+    margin:0.5em;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5em;
+}
+
+.fa {
+    padding-top: 0.5em
 }

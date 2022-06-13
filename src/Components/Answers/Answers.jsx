@@ -2,7 +2,8 @@ import "./Answers.css";
 import AnswersFromSurvey from "../AnswersFromSurvey/AnswersFromSurvey";
 import {useState, useEffect} from "react";
 import jwt from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
 
 
 
@@ -13,20 +14,25 @@ function Answers() {
 
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwt(accessToken);
-
+  
+  const location = useLocation();
+  const idOfSurvey = location.state.idSurvey;
+  console.log("🚀 ~ file: Answers.jsx ~ line 19 ~ Answers ~ idOfSurvey", idOfSurvey)
+  
   function goBackToHomePage() {
     navigate("/Home");
   }
  
   useEffect(() => {
-      fetch("https://my-survey-service.herokuapp.com/api/answers", {
+      fetch(`http://localhost:8080/api/answers/${idOfSurvey}`, {
           method: "GET",
           headers: {
               "Content-Type":"application/json",
           },
       })
       .then((res) => res.json())
-      .then((data) => setArrayOfObjectsOfAnswers(
+      .then((data) => 
+      setArrayOfObjectsOfAnswers(
           data.map((answersFromUser) => ({
             firstName:answersFromUser.firstName,
             lastName:answersFromUser.lastName,

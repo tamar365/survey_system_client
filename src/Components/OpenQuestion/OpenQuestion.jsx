@@ -1,16 +1,16 @@
-// import "./OpenQuestion.css";
+import "./OpenQuestion.css";
+import React from "react";
 
-// function OpenQuestions ({deleteQuestionFunc}) {
+
+function OpenQuestion ({ theQuestion, setUserAnswer}) {
     
-//     // return (
-//     //     <div className="openQuestion">
-//     //         <label for="questionInput" className="writeHereTitle">:כתב/י כאן את השאלה</label>
-//     //         <input type="text" className="questionInput"></input>
-//     //         <div className="questionButtonContainer">
-//     //         <button className="deleteQuestionButton" onClick={deleteQuestionFunc}><i class="fa fa-trash-o"></i></button>
-//     //         </div>
-//     //     </div>
-//     // )
-// }
+    return (
+        <div className="openQuestion">
+        <label htmlFor="questionInput" className="writeHereTitle">{theQuestion}</label>
+        <textarea type="text" className="questionInput" onChange={(e) => setUserAnswer(e.target.value)} rows="5" cols="30" maxLength="250"></textarea>
+        </div>
+    )
 
-// export default OpenQuestions;
+}
+
+export default OpenQuestion;

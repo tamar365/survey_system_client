@@ -1,14 +1,14 @@
 import "./QuestionBox.css";
-import {useState} from "react";
+import React from "react";
 
-function QuestionBox ({deleteQuestionFunc}) {
+function QuestionBox ({deleteQuestionFunc, setOptionOfQuestion, setTheWrittenQuestion, saveOneQuestionFunc, id}) {
     
-    const [optionOfQuestion,setOptionOfQuestion] = useState("")//the variable is an option to send kind of question to built SurveyForUser from DB
-    console.log(optionOfQuestion)
+    
+    
     return (
         <div className="openQuestion">
-            <label for="questionInput" className="writeHereTitle">:כתב/י כאן את השאלה</label>
-            <input type="text" className="questionInput"></input>
+            <label htmlFor="questionInput" className="writeHereTitle">:כתב/י כאן את השאלה</label>
+            <input type="text" className="questionInput" onChange={(e) => setTheWrittenQuestion(e.target.value)}></input>
             <div className="selectDiv">
             <select className="selectKindOfQuestion" onChange={(e) => setOptionOfQuestion(e.target.value)}>
               <option className="fillOfSelectBox" selected disabled hidden>בחר את סוג השאלה</option>
@@ -17,7 +17,8 @@ function QuestionBox ({deleteQuestionFunc}) {
             </select>
             </div>
             <div className="questionButtonContainer">
-            <button className="deleteQuestionButton" onClick={deleteQuestionFunc}><i class="fa fa-trash-o"></i></button>
+            <button className="deleteQuestionButton" onClick={deleteQuestionFunc}>מחק <i className="fa fa-trash-o"></i></button>
+            <button className="saveOneQuestionButton" onClick={saveOneQuestionFunc}>שמור <i className="fa fa-thumb-tack"></i></button>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
+import React from "react";
 
 function Login() {
     const userNameEntered = useRef("");
@@ -14,7 +15,7 @@ function Login() {
       setLoginMessage("");
       if (userNameEntered.current.value && passwordEntered.current.value) {
         const response = await fetch(
-          "https://my-survey-service.herokuapp.com/api/users/login",
+          "http://localhost:8080/api/users/login",
           {
             method: "POST",
             headers: { "Content-type": "application/json" },
@@ -45,7 +46,7 @@ function Login() {
     function register() {
       setLoginMessage("");
       if (userNameEntered.current.value && passwordEntered.current.value) {
-        fetch("https://my-survey-service.herokuapp.com/api/users/register", {
+        fetch("http://localhost:8080/api/users/register", {
           method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({
