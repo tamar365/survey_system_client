@@ -45,7 +45,7 @@ function Login() {
     function register() {
       setLoginMessage("");
       if (userNameEntered.current.value && passwordEntered.current.value) {
-        fetch("https://surveyservices.herokuapp.com//api/users/register", {
+        fetch("https://surveyservices.herokuapp.com/api/users/register", {
           method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({
