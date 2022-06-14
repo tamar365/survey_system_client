@@ -18,7 +18,7 @@ function App() {
   return (
       <Router>
         <Routes>
-          <Route path="/" element={isAuthenticated ? <Home /> : accessToUserSurveyPage ? <SurveyForUser setAccessToUserSurveyPage={setAccessToUserSurveyPage}/> : <Navigate to="/login" replace />} />
+          <Route path="/" element={isAuthenticated ? <Home /> : (accessToUserSurveyPage && isAuthenticated) ? <SurveyForUser setAccessToUserSurveyPage={setAccessToUserSurveyPage}/> : <Navigate to="/login" replace />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/Survey" element={<Survey/>} />
           <Route exact path="/MySurveys" element={<MySurveys/>} />
