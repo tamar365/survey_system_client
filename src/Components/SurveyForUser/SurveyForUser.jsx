@@ -31,7 +31,7 @@ function SurveyForUser() {
       setMessageForUser("");
       if(id.current.value) {
         try{
-          const response = await fetch("https://surveyservices.herokuapp.com//api/answers/newanswers", {
+          const response = await fetch("https://survey-services.herokuapp.com//api/answers/newanswers", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

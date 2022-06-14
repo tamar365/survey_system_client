@@ -15,7 +15,7 @@ function Login() {
       setLoginMessage("");
       if (userNameEntered.current.value && passwordEntered.current.value) {
         const response = await fetch(
-          "https://surveyservices.herokuapp.com//api/users/login",
+          "https://survey-services.herokuapp.com/api/users/login",
           {
             method: "POST",
             headers: { "Content-type": "application/json" },
@@ -45,7 +45,7 @@ function Login() {
     function register() {
       setLoginMessage("");
       if (userNameEntered.current.value && passwordEntered.current.value) {
-        fetch("https://surveyservices.herokuapp.com/api/users/register", {
+        fetch("https://survey-services.herokuapp.com/api/users/register", {
           method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({

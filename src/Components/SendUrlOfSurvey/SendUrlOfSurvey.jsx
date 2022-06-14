@@ -45,7 +45,7 @@ function SendUrlOfSurvey () {
   
   const data=JSON.stringify(detailsOfSurvey);
   const params = new URLSearchParams(data);
-  const url = new URL(`https://surveyservices.herokuapp.com//surveyforuser/${idOfSurvey}`)
+  const url = new URL(`https://survey-services.netlify.app/surveyforuser/${idOfSurvey}`)
   url.search = params;
   
   const sendEmail = (e) => {
