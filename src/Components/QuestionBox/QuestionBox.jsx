@@ -5,7 +5,7 @@ function QuestionBox ({deleteQuestionFunc, setOptionOfQuestion, setTheWrittenQue
     
     return (
         <div className="openQuestion">
-            <label htmlFor="questionInput" className="writeHereTitle">:כתב/י כאן את השאלה</label>
+            <label htmlFor="questionInput" className="writeHereTitle">כתב/י כאן את השאלה:</label>
             <input type="text" className="questionInput" onChange={(e) => setTheWrittenQuestion(e.target.value)}></input>
             <div className="selectDiv">
             <select className="selectKindOfQuestion" onChange={(e) => setOptionOfQuestion(e.target.value)}>

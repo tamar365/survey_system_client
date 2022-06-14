@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import PopUpForSurvey from "../PopUpForSurvey/PopUpForSurvey";
 
 
 function Survey() {
@@ -17,6 +18,8 @@ function Survey() {
   const [theWrittenQuestion, setTheWrittenQuestion] = useState("");
   const [savedDetailsOfSurvey, setSavedDetailsOfSurvey] = useState({});
   const [idOfSurvey, setIdOfSurvey] = useState("");
+  const [openPopUp,setOpenPopUp] = useState(false);
+  const [message, setMessage] = useState("");
   const nameOfSurvey = useRef("");
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
@@ -40,7 +43,7 @@ function Survey() {
   }
 
   const saveTheQuestions = async () => {
-    console.log(arrayOfObjectOfQuestionsToDB)
+    
     try{
       const response = await fetch("http://localhost:8080/api/surveys/newsurvey", {
         method: "POST",
@@ -55,11 +58,14 @@ function Survey() {
       });
       const status = response.status;
       const data = await(response.json()); 
-      
+      console.log(data)
       if (status === 200) { 
           setSavedDetailsOfSurvey(data);
           setIdOfSurvey(data._id);
           data.questions.filter(item => item.optionOfQuestion === "שאלה פתוחה" ? setOpenQuestionOption(true) : item.optionOfQuestion === "שאלת דירוג" ? setScaleQuestionOption(true) : null)
+      }else{
+        setMessage(data.message)
+        setOpenPopUp(true)
       }   
     } catch (e) {
       console.log(e);
@@ -102,6 +108,7 @@ function Survey() {
               <button className="saveButton" onClick={saveTheQuestions}>שמור סקר</button>
           </div>
         </div>
+        {openPopUp && <PopUpForSurvey message={message} setOpenPopUp={setOpenPopUp}/>}
       </div>
         <div className="footer">
           <div className="iconContainer">
