@@ -8,7 +8,7 @@ import React,{useState} from "react";
 import PopUp from "../PopUp/PopUp";
 
 
-function SendUrlOfSurvey () {
+function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
   // const newUrl = "https://bit.ly/39o5QJq";
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
@@ -40,6 +40,7 @@ function SendUrlOfSurvey () {
   }
 
   function goToSurveyForUserPage() {
+    setAccessToUserSurveyPage(true)
     navigate("/SurveyForUser/:idOfSurvey")
   }
   
