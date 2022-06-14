@@ -9,7 +9,7 @@ import PopUp from "../PopUp/PopUp";
 
 
 function SendUrlOfSurvey () {
-  const newUrl = "https://bit.ly/39o5QJq";
+  // const newUrl = "https://bit.ly/39o5QJq";
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwt(accessToken);
