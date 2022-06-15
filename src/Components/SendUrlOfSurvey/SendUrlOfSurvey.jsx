@@ -68,7 +68,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
            <div className="header">
                 <div className="siteName">מערכת סקרים דיגיטלית</div>
                 <div className="hi_logout_container">
-                  <button className="logout" onClick={goBackToHomePage}>חזור לדף הבית</button>
+                  <button className="logout" onClick={(e) => goBackToHomePage(e.preventDefault)}>url</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
                 </div>
             </div>    
