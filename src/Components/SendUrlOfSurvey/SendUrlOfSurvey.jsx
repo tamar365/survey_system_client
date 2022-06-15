@@ -40,7 +40,6 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
   }
 
   function goToSurveyForUserPage() {
-    
     console.log(url)
     setAccessToUserSurveyPage(true)
     navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
@@ -69,7 +68,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
            <div className="header">
                 <div className="siteName">מערכת סקרים דיגיטלית</div>
                 <div className="hi_logout_container">
-                  <button className="logout" >חזור לדף הבית</button>
+                  <button className="logout" onClick={goBackToHomePage}>חזור לדף הבית</button>
                   <div className="HiTitle">{decoded.username}  שלום</div>
                 </div>
             </div>    
@@ -92,7 +91,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
                     </div>
                     <div>
                       <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                       direction="rtl" onClick={goToSurveyForUserPage}>url</textarea>
+                       direction="rtl" onClick={goToSurveyForUserPage} value="url">{url}</textarea>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
