@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import * as emailjs from "emailjs-com";
 import { useLocation } from "react-router-dom";
 import React,{useState} from "react";
-// import {BitlyClient} from "bitly";
 import PopUp from "../PopUp/PopUp";
 
 
 function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
-  // const newUrl = "https://bit.ly/39o5QJq";
+  
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwt(accessToken);
@@ -18,22 +17,6 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
   const detailsOfSurvey = location.state.theChosenSurvey;
   const [openPopup, setOpenPopup] = useState(false);
   const message = "המייל נשלח בהצלחה"
-  // const bytly = new BitlyClient("0d66211ad66f7e7782358b66faeeda428a384b2a", {});
-  //   const [shortURL, setShortURL] = useState("");
-    
-    
-    // const getShortUrl = async (longUrl) => {
-    //     let result;
-    //     try{
-    //         result = await bytly.shorten(longUrl);
-    //     }catch (e){
-    //         console.log(e);
-    //     }
-
-    //     if (result?.url) {
-    //         setShortURL(result?.url);
-    //     }
-    // }
 
  
   function goBackToHomePage() {
@@ -56,7 +39,6 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
     e.preventDefault();
     const formValue = Object.fromEntries(new FormData(e.target));
     formValue.my_html = `<a href="${url}" target="_blank" rel="noopener" data-mce-href="${url}" data-mce-selected="inline-boundary">עבור לסקר</a>`
-    console.log("🚀 ~ file: SendUrlOfSurvey.jsx ~ line 59 ~ sendEmail ~ formValue", formValue)
     emailjs.send('service_9r6nz3w', 'template_iywedyq', formValue,'LCss0q5vqj-VYk3f9')
     .then((result) => {
           console.log(result.text);
