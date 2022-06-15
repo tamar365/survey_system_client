@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 import React,{useState} from "react";
 // import {BitlyClient} from "bitly";
 import PopUp from "../PopUp/PopUp";
-import { useEffect } from "react";
 
 
 function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
@@ -99,7 +98,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
                     <a className="anchor"  name="link" href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a>
                     </div> */}
                     <div>
-                      <input className="dinamicUrl" name="my_html">{`<a className="anchor"  name="link" href=${url} direction="rtl" >לחץ בכדי לעבור לסקר</a>`}</input>
+                      <input className="dinamicUrl" name="my_html">{"<a href={url}>לחץ בכדי לעבור לסקר</a>"}</input>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
