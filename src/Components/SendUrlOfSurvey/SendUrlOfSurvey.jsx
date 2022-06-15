@@ -40,7 +40,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
   }
 
   function goToSurveyForUserPage(e) {
-    e.preventDefault;
+    e.preventDefault();
     console.log(url)
     setAccessToUserSurveyPage(true)
     navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
@@ -92,7 +92,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
                     </div>
                     <div>
                       <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                       direction="rtl" onClick={(e) => goToSurveyForUserPage(e)}>url</textarea>
+                       direction="rtl" onClick={goToSurveyForUserPage}>url</textarea>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
