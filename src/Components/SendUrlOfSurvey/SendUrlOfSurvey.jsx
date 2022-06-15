@@ -42,7 +42,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
   function goToSurveyForUserPage() {
     console.log(url)
     setAccessToUserSurveyPage(true)
-    navigate("/SurveyForUser/:idOfSurvey", {replace: true})
+    navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
     // navigate(url)
   }
   
@@ -91,7 +91,10 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
                     </div>
                     <div>
                       <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                       direction="rtl" onClick={goToSurveyForUserPage}>לחץ כאן על מנת להגיע לדף הסקר</textarea>
+                       direction="rtl">לחץ על הכפתור על מנת להגיע לדף הסקר</textarea>
+                    </div>
+                    <div>
+                      <button  onClick={goToSurveyForUserPage} className="urlButton" name="urlButton">קישור לסקר</button>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
