@@ -42,7 +42,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
   function goToSurveyForUserPage() {
     console.log(url)
     setAccessToUserSurveyPage(true)
-    // navigate("/SurveyForUser/:idOfSurvey")
+    navigate("/SurveyForUser/:idOfSurvey", {replace: true})
     // navigate(url)
   }
   
@@ -90,7 +90,8 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
                       <input className="subjectEmailInput emailInput" type="text" placeholder="נושא" name="subject"/> 
                     </div>
                     <div>
-                      <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message" direction="rtl" onClick={goToSurveyForUserPage}>{url}</textarea>
+                      <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
+                       direction="rtl" onClick={goToSurveyForUserPage}>לחץ כאן על מנת להגיע לדף הסקר</textarea>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
