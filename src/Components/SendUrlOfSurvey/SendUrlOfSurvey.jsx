@@ -41,12 +41,12 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
     navigate("/");
   }
 
-  function goToSurveyForUserPage() {
-    console.log(url)
-    setAccessToUserSurveyPage(true)
-    navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
-    // navigate(url)
-  }
+  // function goToSurveyForUserPage() {
+  //   console.log(url)
+  //   setAccessToUserSurveyPage(true)
+  //   navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
+  //   // navigate(url)
+  // }
   
   const data=JSON.stringify(detailsOfSurvey);
   const params = new URLSearchParams(data);
@@ -96,9 +96,9 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
                         href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a> */}
                     {/* </div> */}
                     <div>
-                      <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                         direction="rtl" onClick={goToSurveyForUserPage}> <a className="anchor"  name="link"
-                        href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a></textarea>
+                      <input className="messageEmailInput emailInput" type="text" cols="30" rows="8" placeholder="ההודעה שלך" name="message" direction="rtl" > 
+                         <a className="anchor"  name="link" href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a>
+                      </input>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
