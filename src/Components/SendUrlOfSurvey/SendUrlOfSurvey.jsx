@@ -39,12 +39,12 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
     navigate("/");
   }
 
-  function goToSurveyForUserPage() {
-    console.log(url)
-    setAccessToUserSurveyPage(true)
-    navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
-    // navigate(url)
-  }
+  // function goToSurveyForUserPage() {
+  //   console.log(url)
+  //   setAccessToUserSurveyPage(true)
+  //   navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
+  //   // navigate(url)
+  // }
   
   const data=JSON.stringify(detailsOfSurvey);
   const params = new URLSearchParams(data);
@@ -91,7 +91,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
                     </div>
                     <div>
                       <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                       direction="rtl" onClick={goToSurveyForUserPage}>{url}</textarea>
+                       direction="rtl" >{url}</textarea>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
