@@ -20,7 +20,7 @@ function App() {
       <Router>
         <Routes>
           {/* <Route path="/" element={isAuthenticated ? <Home /> : (accessToUserSurveyPage && isAuthenticated) ? <Navigate to="/SurveyForUser/:idOfSurvey" setAccessToUserSurveyPage={setAccessToUserSurveyPage} replace/> : <Navigate to="/login" replace />} /> */}
-          <Route exact path="/" element={<SurveyForUser />} />
+          <Route exact path={fullURL} element={<SurveyForUser />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/Survey" element={<Survey/>} />
           <Route exact path="/MySurveys" element={<MySurveys/>} />
