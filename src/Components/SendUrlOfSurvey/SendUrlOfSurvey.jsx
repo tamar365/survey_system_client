@@ -6,9 +6,10 @@ import { useLocation } from "react-router-dom";
 import React,{useState} from "react";
 // import {BitlyClient} from "bitly";
 import PopUp from "../PopUp/PopUp";
+import { useEffect } from "react";
 
 
-function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
+function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
   // const newUrl = "https://bit.ly/39o5QJq";
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
@@ -34,6 +35,10 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
     //         setShortURL(result?.url);
     //     }
     // }
+
+  useEffect(() => {
+     setFullURL(url)
+  })  
 
   function goBackToHomePage() {
     navigate("/");

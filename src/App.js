@@ -14,19 +14,20 @@ function App() {
   
   const isAuthenticated = JSON.parse(localStorage.getItem("accessToken")) || false;
   const [accessToUserSurveyPage, setAccessToUserSurveyPage] = useState(false);
+  const [fullURL, setFullURL] = useState("");
 
   return (
       <Router>
         <Routes>
           {/* <Route path="/" element={isAuthenticated ? <Home /> : (accessToUserSurveyPage && isAuthenticated) ? <Navigate to="/SurveyForUser/:idOfSurvey" setAccessToUserSurveyPage={setAccessToUserSurveyPage} replace/> : <Navigate to="/login" replace />} /> */}
-          <Route exact path="/" element={<SurveyForUser/>} />
+          <Route exact path="/" element={<SurveyForUser />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/Survey" element={<Survey/>} />
           <Route exact path="/MySurveys" element={<MySurveys/>} />
           <Route exact path="/ExampleOfCreatedSurvey/:idOfSurvey" element={<ExampleOfCreatedSurvey/>} />
           <Route exact path="/Surveyforuser/:idOfSurvey" element={<SurveyForUser setAccessToUserSurveyPage={setAccessToUserSurveyPage}/>} />
           <Route exact path="/Answers" element={<Answers/>} />
-          <Route exact path="/SendUrlOfSurvey" element={<SendUrlOfSurvey/>} />
+          <Route exact path="/SendUrlOfSurvey" element={<SendUrlOfSurvey setFullURL={setFullURL}/>} />
         </Routes>
       </Router>
   );
