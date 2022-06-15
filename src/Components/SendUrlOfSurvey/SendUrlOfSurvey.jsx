@@ -92,8 +92,8 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
                       <input className="subjectEmailInput emailInput" type="text" placeholder="נושא" name="subject"/> 
                     </div>
                     <div>
-                      <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                       direction="rtl" onClick={goToSurveyForUserPage}>{url}</textarea>
+                      <a className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
+                        href={url} direction="rtl" onClick={goToSurveyForUserPage}>לחץ בכדי לעבור לסקר</a>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
