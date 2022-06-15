@@ -36,20 +36,17 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
     //     }
     // }
 
-  useEffect(() => {
-     setFullURL(url)
-  })  
-
+ 
   function goBackToHomePage() {
     navigate("/");
   }
 
-  // function goToSurveyForUserPage() {
-  //   console.log(url)
-  //   setAccessToUserSurveyPage(true)
-  //   navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
-  //   // navigate(url)
-  // }
+  function goToSurveyForUserPage() {
+    console.log(url)
+    setAccessToUserSurveyPage(true)
+    navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
+    // navigate(url)
+  }
   
   const data=JSON.stringify(detailsOfSurvey);
   const params = new URLSearchParams(data);
@@ -96,7 +93,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
                     </div>
                     <div>
                       <textarea className="messageEmailInput emailInput" cols="30" rows="8" placeholder="ההודעה שלך" name="message"
-                       direction="rtl" >{url}</textarea>
+                       direction="rtl" onClick={goToSurveyForUserPage}>{url}</textarea>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
