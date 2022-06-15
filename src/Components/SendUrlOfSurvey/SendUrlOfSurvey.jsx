@@ -39,8 +39,8 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
     navigate("/");
   }
 
-  function goToSurveyForUserPage(e) {
-    e.preventDefault();
+  function goToSurveyForUserPage() {
+    
     console.log(url)
     setAccessToUserSurveyPage(true)
     navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
