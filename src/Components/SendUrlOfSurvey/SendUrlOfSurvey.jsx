@@ -99,7 +99,7 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
                     <a className="anchor"  name="link" href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a>
                     </div> */}
                     <div>
-                      <input className="dinamicUrl" name="my_html"></input>
+                      <input className="dinamicUrl" name="my_html">{`<a className="anchor"  name="link" href=${url} direction="rtl" >לחץ בכדי לעבור לסקר</a>`}</input>
                     </div>
                     <div>
                       <input type="submit" value="שלח"></input>
