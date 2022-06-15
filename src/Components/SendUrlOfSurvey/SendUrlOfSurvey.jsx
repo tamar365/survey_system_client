@@ -40,8 +40,10 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage}) {
   }
 
   function goToSurveyForUserPage() {
+    console.log(url)
     setAccessToUserSurveyPage(true)
-    navigate("/SurveyForUser/:idOfSurvey")
+    // navigate("/SurveyForUser/:idOfSurvey")
+    // navigate(url)
   }
   
   const data=JSON.stringify(detailsOfSurvey);
