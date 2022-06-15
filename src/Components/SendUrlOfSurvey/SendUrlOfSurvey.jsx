@@ -54,9 +54,10 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
   
   const sendEmail = (e) => {
     e.preventDefault();
-    const formValue = e.target;
+    const formValue = Object.fromEntries(new FormData(e.target));
     formValue.my_html = `<a href="${url}" target="_blank" rel="noopener" data-mce-href="${url}" data-mce-selected="inline-boundary">עבור לסקר</a>`
-    emailjs.sendForm('service_9r6nz3w', 'template_iywedyq', formValue,'LCss0q5vqj-VYk3f9')
+    console.log("🚀 ~ file: SendUrlOfSurvey.jsx ~ line 59 ~ sendEmail ~ formValue", formValue)
+    emailjs.send('service_9r6nz3w', 'template_iywedyq', formValue,'LCss0q5vqj-VYk3f9')
     .then((result) => {
           console.log(result.text);
           setOpenPopup(true)
