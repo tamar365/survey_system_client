@@ -54,7 +54,9 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
   
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_9r6nz3w', 'template_iywedyq', e.target,'LCss0q5vqj-VYk3f9')
+    const formValue = e.target;
+    formValue.my_html = `<a href="${url}" target="_blank" rel="noopener" data-mce-href="${url}" data-mce-selected="inline-boundary">עבור לסקר</a>`
+    emailjs.sendForm('service_9r6nz3w', 'template_iywedyq', formValue,'LCss0q5vqj-VYk3f9')
     .then((result) => {
           console.log(result.text);
           setOpenPopup(true)
@@ -80,7 +82,9 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
             </div>
            <div className="inputsContainer">
               <div className="answersFromUserContainer">
-                  <form onSubmit={sendEmail}>
+                  <form onSubmit={
+                    sendEmail
+                  }>
                   <div>
                       <input className="tomailInput emailInput" type="email" placeholder="לשלוח אל כתובת המייל" name="toEmail"/> 
                     </div>
@@ -97,9 +101,9 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
                     {/* <div>
                     <a className="anchor"  name="link" href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a>
                     </div> */}
-                    <div>
+                    {/* <div>
                       <input type ="button" className="dinamicUrl" name="my_html" value={url} />
-                    </div>
+                    </div> */}
                     <div>
                       <input type="submit" value="שלח"></input>
                     </div>
