@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/Survey" element={<Survey/>} />
           <Route exact path="/MySurveys" element={<MySurveys/>} />
           <Route exact path="/ExampleOfCreatedSurvey/:idOfSurvey" element={<ExampleOfCreatedSurvey/>} />
-          <Route exact path="/SurveyForUser/:idOfSurvey" element={<SurveyForUser setAccessToUserSurveyPage={setAccessToUserSurveyPage}/>} />
+          <Route exact path="/Surveyforuser/:idOfSurvey" element={<SurveyForUser setAccessToUserSurveyPage={setAccessToUserSurveyPage}/>} />
           <Route exact path="/Answers" element={<Answers/>} />
           <Route exact path="/SendUrlOfSurvey" element={<SendUrlOfSurvey/>} />
         </Routes>
