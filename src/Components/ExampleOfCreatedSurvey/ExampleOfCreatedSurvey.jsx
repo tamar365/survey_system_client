@@ -12,9 +12,6 @@ function ExampleOfCreatedSurvey() {
     const fName =useRef("");
     const lName =useRef("");
     const id =useRef("");
-    const [messageForUser, setMessageForUser] = useState("");
-    const [userChoice, setUserChoice] = useState("");
-    const [userAnswer, setUserAnswer] = useState("")
     const navigate = useNavigate();
     const accessToken = localStorage.getItem("accessToken");
     const decoded = jwt(accessToken);
@@ -52,13 +49,12 @@ function ExampleOfCreatedSurvey() {
                   <h4 className="IDTitle">:תעודת זהות</h4>
                   </div>
                   <input className="IDInput" maxLength="9" ref={id} required></input>
-                  <p className="messageForUser">{messageForUser}</p>
                 </div>
                 <div className="questionsContainer">
                   {
                   savedDetailsOfSurvey.questions.map((question) => (
-                    (question.optionOfQuestion === "שאלה פתוחה") ? <OpenQuestion theTypeOfQuestion={question.theTypeOfQuestion} theQuestion={question.theWrittenQuestion} setUserAnswer={setUserAnswer}/> : 
-                    (question.optionOfQuestion === "שאלת דירוג") ? <ScaleQuestion theTypeOfQuestion={question.theTypeOfQuestion} theQuestion={question.theWrittenQuestion}  setUserChoice={setUserChoice}/> :
+                    (question.optionOfQuestion === "שאלה פתוחה") ? <OpenQuestion theTypeOfQuestion={question.theTypeOfQuestion} theQuestion={question.theWrittenQuestion} /> : 
+                    (question.optionOfQuestion === "שאלת דירוג") ? <ScaleQuestion theTypeOfQuestion={question.theTypeOfQuestion} theQuestion={question.theWrittenQuestion} /> :
                     null
                    ))
                   }

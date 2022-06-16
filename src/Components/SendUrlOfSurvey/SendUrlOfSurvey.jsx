@@ -7,7 +7,7 @@ import React,{useState} from "react";
 import PopUp from "../PopUp/PopUp";
 
 
-function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
+function SendUrlOfSurvey () {
   
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
@@ -18,18 +18,10 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
   const [openPopup, setOpenPopup] = useState(false);
   const message = "המייל נשלח בהצלחה"
 
- 
   function goBackToHomePage() {
     navigate("/");
   }
 
-  // function goToSurveyForUserPage() {
-  //   console.log(url)
-  //   setAccessToUserSurveyPage(true)
-  //   navigate("/SurveyForUser/:idOfSurvey", {serach: params, replace: true})
-  //   // navigate(url)
-  // }
-  
   const data=JSON.stringify(detailsOfSurvey);
   const params = new URLSearchParams(data);
   const url = new URL(`https://survey-services.netlify.app/surveyforuser/${idOfSurvey}`)
@@ -38,7 +30,8 @@ function SendUrlOfSurvey ({setAccessToUserSurveyPage, setFullURL}) {
   const sendEmail = (e) => {
     e.preventDefault();
     const formValue = Object.fromEntries(new FormData(e.target));
-    formValue.my_html = `<a href="${url}" target="_blank" rel="noopener" data-mce-href="${url}" data-mce-selected="inline-boundary">עבור לסקר</a>`
+    // formValue.my_html = `<a href="${url}" target="_blank" rel="noopener" data-mce-href="${url}" data-mce-selected="inline-boundary">עבור לסקר</a>`
+    formValue.my_html = `<a href="${url}" target="_blank">עבור לסקר</a>`
     emailjs.send('service_9r6nz3w', 'template_iywedyq', formValue,'LCss0q5vqj-VYk3f9')
     .then((result) => {
           console.log(result.text);

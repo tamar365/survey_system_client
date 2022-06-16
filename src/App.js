@@ -7,13 +7,11 @@ import SendUrlOfSurvey from "./Components/SendUrlOfSurvey/SendUrlOfSurvey";
 import { Route, BrowserRouter as Router, Routes, Navigate } from "react-router-dom";
 import ExampleOfCreatedSurvey from "./Components/ExampleOfCreatedSurvey/ExampleOfCreatedSurvey";
 import MySurveys from "./Components/MySurveys/MySurveys";
-import {useState} from "react";
 
 
 function App() {
   
   const isAuthenticated = JSON.parse(localStorage.getItem("accessToken")) || false;
-  const [accessToUserSurveyPage, setAccessToUserSurveyPage] = useState(false);
  
   return (
       <Router>
@@ -23,7 +21,7 @@ function App() {
           <Route exact path="/Survey" element={<Survey/>} />
           <Route exact path="/MySurveys" element={<MySurveys/>} />
           <Route exact path="/ExampleOfCreatedSurvey/:idOfSurvey" element={<ExampleOfCreatedSurvey/>} />
-          <Route exact path="/Surveyforuser/:idOfSurvey" element={<SurveyForUser setAccessToUserSurveyPage={setAccessToUserSurveyPage} />} />
+          <Route exact path="/Surveyforuser/:idOfSurvey" element={<SurveyForUser s />} />
           <Route exact path="/Answers" element={<Answers/>} />
           <Route exact path="/SendUrlOfSurvey" element={<SendUrlOfSurvey/>} />
         </Routes>

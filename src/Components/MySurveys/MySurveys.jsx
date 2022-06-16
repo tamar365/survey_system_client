@@ -1,6 +1,4 @@
 import "./MySurveys.css";
-// import QuestionBox from "../QuestionBox/QuestionBox";
-// import SurveyForUser from "../SurveyForUser/SurveyForUser";
 import { useState, useEffect } from "react";
 import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -11,9 +9,7 @@ function MySurveys() {
   
   const [idOfSurveyForAnswers, setIdOfSurveyForAnsweres] = useState("");
   const [arrayOfDetailsOfSurveys, setArrayOfDetailsOfSurveys] = useState([]);
-  // const [detailsForMailPage, setDetailsOfMailPage] = useState({});
   const [theChosenSurvey,setTheChosenSurvey] = useState();
-  // const [theChosenAnswersOfSurvey, setTheChosenAnswersOfSurvey] = useState("");
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const decoded = jwt(accessToken);
@@ -29,11 +25,10 @@ function MySurveys() {
   useEffect(() => {
     if (theChosenSurvey) {
       navigate("/SendUrlOfSurvey", {state:{theChosenSurvey:theChosenSurvey}});
-      // navigate("/SendUrlOfSurvey", {state:{theChosenSurvey:theChosenSurvey, openQuestionOption:true, scaleQuestionOption:true }});
     }
   },[theChosenSurvey,navigate])
 
-//maybe not need the 2 last key & value
+
   function goToAnswersPage(idSurvey) {
     setIdOfSurveyForAnsweres(idSurvey)
   } 
