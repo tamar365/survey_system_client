@@ -1,7 +1,7 @@
 import "./ExampleOfCreatedSurvey.css";
 import OpenQuestion from "../OpenQuestion/OpenQuestion";
 import ScaleQuestion from "../ScaleQuestion/ScaleQuestion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import jwt from "jwt-decode";
