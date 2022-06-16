@@ -19,7 +19,7 @@ function Answers() {
   }
  
   useEffect(() => {
-      fetch(`http://localhost:8080/api/answers/${idOfSurvey}`, {
+      fetch(`https://surevyservices.herokuapp.com/api/answers/${idOfSurvey}`, {
           method: "GET",
           headers: {
               "Content-Type":"application/json",
