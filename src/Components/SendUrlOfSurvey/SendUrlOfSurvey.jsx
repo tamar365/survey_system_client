@@ -65,7 +65,7 @@ function SendUrlOfSurvey () {
                       <input className="tomailInput emailInput" type="email" placeholder="לשלוח אל כתובת המייל" name="toEmail"/> 
                     </div>
                     <div>
-                      <input className="nameEmailInput emailInput" type="text" placeholder="שם" name="name"/> 
+                      <input className="nameEmailInput emailInput" type="text" placeholder="שם הנמען" name="name"/> 
                     </div>
                     <div>
                       <input className="subjectEmailInput emailInput" type="text" placeholder="נושא" name="subject"/> 
