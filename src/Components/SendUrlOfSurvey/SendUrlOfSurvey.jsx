@@ -71,7 +71,7 @@ function SendUrlOfSurvey () {
                       <input className="subjectEmailInput emailInput" type="text" placeholder="נושא" name="subject"/> 
                     </div>
                     <div>
-                      <textarea className="messageEmailInput emailInput" type="text" cols="30" rows="8" placeholder="ההודעה שלך" name="message" direction="rtl" > 
+                      <textarea className="messageEmailInput emailInput" type="text" cols="30" rows="8" placeholder="ההודעה שלך (קישור לסקר כבר נמצא בגוף ההודעה)" name="message" direction="rtl" > 
                       </textarea>
                     </div>
                     {/* <div>
