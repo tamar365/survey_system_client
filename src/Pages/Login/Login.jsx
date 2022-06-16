@@ -5,7 +5,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import React from "react";
 
-function Login() {
+function Login({setAuth}) {
     const userNameEntered = useRef("");
     const passwordEntered = useRef("");
     const navigate = useNavigate();
@@ -33,6 +33,7 @@ function Login() {
             "accessToken",
             JSON.stringify(data)
           );
+          setAuth(JSON.parse(localStorage.getItem("accessToken")))
           navigate("/");
         } else {
           setLoginMessage("שם משתמש או מייל לא תקינים");
