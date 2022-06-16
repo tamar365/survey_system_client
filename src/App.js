@@ -16,7 +16,6 @@ function App() {
 
   const setAuth = (value) => {
     setIsAuthenticated(value);
-    alert(value);
   }
 
   useEffect(() => {
