@@ -45,7 +45,7 @@ function Survey() {
   const saveTheQuestions = async () => {
     
     try{
-      const response = await fetch("http://localhost:8080/api/surveys/newsurvey", {
+      const response = await fetch("https://surveyservices.herokuapp.com/api/surveys/newsurvey", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
