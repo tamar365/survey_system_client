@@ -40,7 +40,7 @@ function MySurveys() {
   },[idOfSurveyForAnswers,navigate])
    
   useEffect (() => {
-      fetch("http://localhost:8080/api/surveys", {
+      fetch("https://surveyservices.herokuapp.com/api/surveys", {
           method:"GET",
           headers: {
               "Content-Type": "application/json",
