@@ -31,7 +31,7 @@ function SurveyForUser() {
       setMessageForUser("");
       if(id.current.value) {
         try{
-          const response = await fetch("https://surevyservices.herokuapp.com/api/answers/newanswers", {
+          const response = await fetch("http://localhost:8080/api/answers/newanswers", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
