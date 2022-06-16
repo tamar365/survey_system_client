@@ -30,8 +30,7 @@ function SendUrlOfSurvey () {
   const sendEmail = (e) => {
     e.preventDefault();
     const formValue = Object.fromEntries(new FormData(e.target));
-    // formValue.my_html = `<a href="${url}" target="_blank" rel="noopener" data-mce-href="${url}" data-mce-selected="inline-boundary">עבור לסקר</a>`
-    formValue.my_html = `<a href="${url}" target="_blank">עבור לסקר</a>`
+    formValue.my_html = `<a href="${url}" target="_blank">עבור לסקר</a>`;
     emailjs.send('service_9r6nz3w', 'template_iywedyq', formValue,'LCss0q5vqj-VYk3f9')
     .then((result) => {
           console.log(result.text);
@@ -74,12 +73,6 @@ function SendUrlOfSurvey () {
                       <textarea className="messageEmailInput emailInput" type="text" cols="30" rows="8" placeholder="ההודעה שלך (קישור לסקר כבר נמצא בגוף ההודעה)" name="message" direction="rtl" > 
                       </textarea>
                     </div>
-                    {/* <div>
-                    <a className="anchor"  name="link" href={url} direction="rtl" >לחץ בכדי לעבור לסקר</a>
-                    </div> */}
-                    {/* <div>
-                      <input type ="button" className="dinamicUrl" name="my_html" value={url} />
-                    </div> */}
                     <div>
                       <input type="submit" value="שלח"></input>
                     </div>
