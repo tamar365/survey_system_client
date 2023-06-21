@@ -5,11 +5,11 @@ This application was developed for desktop. You can visit the site at https://su
 
 ## Description
 
-Survey App is a web-based application built using the technologies: React, CSS, HTML and MAILJS in this repository (...and in another repository that includes the backend ['survey_system_backend'] - using the technologies: Node.js, Express.js, MongoDB). It provides an intuitive interface for creating surveys with yes/no or multiple-choice questions, sending them to participants via email using the MailJS library, and storing their responses in a database.
+Survey App is a web-based application built using the technologies: React, CSS, HTML and MAILJS in this repository (...and in another repository that includes the backend ['survey_system_backend'] - using the technologies: Node.js, Express.js, MongoDB). It provides an intuitive interface for creating surveys with yes/no or scale questions, sending them to participants via email using the MailJS library, and storing their responses in a database.
 
 ## Features
 
-- Create custom surveys: Design surveys with yes/no or multiple-choice questions.
+- Create custom surveys: Design surveys with yes/no or scale questions.
 - Send surveys via email: Use the MailJS library to send survey invitations to participants via email.
 - Collect responses: Gather feedback and responses from participants.
 - Store responses in a database: Save the survey responses in a database for further analysis.
