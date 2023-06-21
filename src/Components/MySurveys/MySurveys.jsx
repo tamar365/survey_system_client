@@ -41,7 +41,7 @@ function MySurveys() {
   }, [idOfSurveyForAnswers, navigate]);
 
   useEffect(() => {
-    fetch("https://survey-backend.netlify.app/api/surveys", {
+    fetch("https://survey-backend-wnwj.onrender.com/api/surveys", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

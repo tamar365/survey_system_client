@@ -31,7 +31,7 @@ function SurveyForUser() {
     if (id.current.value) {
       try {
         const response = await fetch(
-          "https://survey-backend.netlify.app/api/answers/newanswers",
+          "https://survey-backend-wnwj.onrender.com/api/answers/newanswers",
           {
             method: "POST",
             headers: {

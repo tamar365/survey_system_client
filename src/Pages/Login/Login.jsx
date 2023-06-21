@@ -15,7 +15,7 @@ function Login({ setAuth }) {
     setLoginMessage("");
     if (userNameEntered.current.value && passwordEntered.current.value) {
       const response = await fetch(
-        "https://survey-backend.netlify.app/api/users/login",
+        "https://survey-backend-wnwj.onrender.com/api/users/login",
         {
           method: "POST",
           headers: { "Content-type": "application/json" },
@@ -43,7 +43,7 @@ function Login({ setAuth }) {
   function register() {
     setLoginMessage("");
     if (userNameEntered.current.value && passwordEntered.current.value) {
-      fetch("https://survey-backend.netlify.app/api/users/register", {
+      fetch("https://survey-backend-wnwj.onrender.com/api/users/register", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

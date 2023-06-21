@@ -52,7 +52,7 @@ function Survey() {
   const saveTheQuestions = async () => {
     try {
       const response = await fetch(
-        "https://survey-backend.netlify.app/api/surveys/newsurvey",
+        "https://survey-backend-wnwj.onrender.com/api/surveys/newsurvey",
         {
           method: "POST",
           headers: {

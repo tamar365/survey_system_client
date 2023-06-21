@@ -18,12 +18,15 @@ function Answers() {
   }
 
   useEffect(() => {
-    fetch(`https://survey-backend.netlify.app/api/answers/${idOfSurvey}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://survey-backend-wnwj.onrender.com/api/answers/${idOfSurvey}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) =>
         setArrayOfObjectsOfAnswers(
