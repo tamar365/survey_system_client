@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# SURVEY APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Survey App! This application allows you to create surveys, send them to users via email, and store their responses in a database.
+This application was developed for desktop. You can visit the site at https://survey-services.netlify.app/
+
+## Description
+
+Survey App is a web-based application built using the technologies: React, CSS, HTML and MAILJS in this repository (...and in another repository that includes the backend ['survey_system_backend'] - using the technologies: Node.js, Express.js, MongoDB). It provides an intuitive interface for creating surveys with yes/no or multiple-choice questions, sending them to participants via email using the MailJS library, and storing their responses in a database.
+
+## Features
+
+- Create custom surveys: Design surveys with yes/no or multiple-choice questions.
+- Send surveys via email: Use the MailJS library to send survey invitations to participants via email.
+- Collect responses: Gather feedback and responses from participants.
+- Store responses in a database: Save the survey responses in a database for further analysis.
 
 ## Available Scripts
 
